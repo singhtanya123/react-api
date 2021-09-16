@@ -1,5 +1,5 @@
-.App{    
-  color: #FFFFFF;
+.App {
+  color: #ffffff;
 }
 .App-logo {
   height: 10vmin;
@@ -11,7 +11,7 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-.App-header{
+.App-header {
   box-sizing: border-box;
   padding: 5px;
   min-height: 300px;
