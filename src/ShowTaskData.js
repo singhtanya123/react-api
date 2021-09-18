@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 function ShowTaskData() {
   const [data, setData] = useState([]);
   const getData = () => {
+    const postBody = {
+      type: "hot",
+      limit: 10
+  };
     fetch("https://jsonplaceholder.typicode.com/comments", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        body: JSON.stringify(postBody)
       },
     })
       .then(function (response) {
