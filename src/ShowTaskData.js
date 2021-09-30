@@ -1,35 +1,23 @@
-import React, { useState, useEffect } from "react";
-function ShowTaskData() {
-  const [data, setData] = useState([]);
-  const getData = () => {
-    const postBody = {
-      type: "hot",
-      limit: 10
+import React from "react";
+function ShowTaskData({ data, setData }) {
+  const handleDelete = (index) => {
+    setData(data.filter((c, i) => i !== index));
   };
-    fetch("https://jsonplaceholder.typicode.com/comments", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        body: JSON.stringify(postBody)
-      },
-    })
-      .then(function (response) {
-        console.log(response);
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-        setData(myJson);
-      });
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+
   return (
     <div>
       {data &&
         data.length > 0 &&
-        data.map((item) => <p key={item.id}>{item.name}</p>)}
+        data.map((item, index) => (
+          <div key={item.id} style={{ display: "flex" }}>
+            <div>{item.name}</div>
+            <div>
+              <button type='button' onClick={() => handleDelete(index)}>
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
     </div>
   );
 }

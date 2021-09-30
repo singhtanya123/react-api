@@ -1,9 +1,44 @@
-import React, {/* useState */}  from "react";
-//import AddTaskForm from "./AddTaskForm";
+import React, { useState } from "react";
 import AddTask from "./AddTask";
 import ShowTaskData from "./ShowTaskData";
 
 function Header() {
+  const [data, setData] = useState([
+    {
+      name: "Name 1",
+      id: "num-1",
+    },
+    {
+      name: "Name 2",
+      id: "num-2",
+    },
+  ]);
+
+  const getData = () => {
+    const postBody = {
+      type: "hot",
+      limit: 10,
+    };
+    fetch("https://jsonplaceholder.typicode.com/comments", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        body: JSON.stringify(postBody),
+      },
+    })
+      .then(function (response) {
+        console.log(response);
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
+        setData(myJson);
+      });
+  };
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
   /*
   let form;
   //const [color, setColor] = useState("green");  //to change color acc to button toggle
@@ -22,10 +57,13 @@ function Header() {
   */
   return (
     <div>
-      <AddTask /* color={show ? "red": "green" } onClick={onClick} title={show ? "Close":"Add Task" }*/ />
-      {/* AddTask for adding button  and form = AddTaskform to get the task on tasks detail 
-      {form}*/}
-      <ShowTaskData />
+      <AddTask
+        data={data}
+        setData={
+          setData
+        } /* color={show ? "red": "green" } onClick={onClick} title={show ? "Close":"Add Task" }*/
+      />
+      <ShowTaskData data={data} setData={setData} />
     </div>
   );
 }
