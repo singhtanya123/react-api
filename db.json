@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "name": "react",
+      "email": "react@gmail.com",
+      "body": "React learn",
+      "id": 16
+    },
+    {
+      "name": "apple",
+      "email": "apple",
+      "body": "apple",
+      "id": 17
+    },
+    {
+      "name": "",
+      "email": "",
+      "body": "",
+      "id": 20
+    },
+    {
+      "name": "rrr",
+      "email": "rrr",
+      "body": "rr",
+      "id": 21
+    },
+    {
+      "name": "eee",
+      "email": "ee",
+      "body": "ee",
+      "id": 22
+    },
+    {
+      "name": "sss",
+      "email": "ss",
+      "body": "ss",
+      "id": 23
+    },
+    {
+      "name": "react",
+      "email": "react@gmail.com",
+      "body": "React learn",
+      "id": 24
+    },
+    {
+      "name": "helllllllo",
+      "email": "minsomu26@gmail.com",
+      "body": "frf",
+      "id": 25
+    }
+  ]
+}

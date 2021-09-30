@@ -1,35 +1,58 @@
-import React, { useState, useEffect } from "react";
-function ShowTaskData() {
-  const [data, setData] = useState([]);
-  const getData = () => {
-    const postBody = {
-      type: "hot",
-      limit: 10
-  };
-    fetch("https://jsonplaceholder.typicode.com/comments", {
+
+import EditData from "./EditData";
+
+function ShowTaskData({data,setData}) {
+  let propData;
+  const url = "http://localhost:5000/posts";
+  const delData = (id) => {
+    console.log(id);
+    const requestMetadata = {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
-        body: JSON.stringify(postBody)
       },
-    })
-      .then(function (response) {
-        console.log(response);
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-        setData(myJson);
+    };
+    
+    fetch(url + "/" + id, requestMetadata)
+      .then((res) => res.json())
+      .then((result) => {
+        setData(data.filter( x =>  x.id!=id ))
       });
   };
-  useEffect(() => {
-    getData();
-  }, []);
+
+  
   return (
-    <div>
+    <div class="margin-top">
+      <p>Let's get started</p>
       {data &&
         data.length > 0 &&
-        data.map((item) => <p key={item.id}>{item.name}</p>)}
+        //code to get last 5 records
+        data
+          .filter((item) => item.id >= data.length - 10)
+          .map((item) => (
+            <p class="secondary-color" key={item.id} id="showtitle">
+              <span class="primary-color margin-top">TitleName: </span>
+              {item.id} {item.name}
+              {/* it took me so long to understand , this button is created for delete but capturing happens so used stopPropagation to stop it. */}
+              <i
+                class="fas fa-trash right"
+                value={item.id}
+                onClick={(e) => {
+                  delData(item.id);
+                  e.stopPropagation();
+                }}
+              ></i>
+              <i
+                class="fas fa-edit right margin-right right"
+                value={item.id}
+                onClick={(e) => {
+                  e.stopPropagation();                  
+                  <EditData id={item.id} />;
+                }}
+              ></i>
+            </p>
+          ))}
+      {propData}
     </div>
   );
 }

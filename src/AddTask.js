@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import AddTaskForm from "./AddTaskForm";
 
-const AddTask = (/*{ color, title, onClick }*/) => {
+const AddTask = ({data,setData}) => {
   let form;
   const [show, setShow] = useState(false);
   const onClick=(e)=>{
@@ -10,14 +10,14 @@ const AddTask = (/*{ color, title, onClick }*/) => {
   }
   if (show) {
     // will only if show form is true otherwise hide.
-    form = <AddTaskForm />; 
+    form = <AddTaskForm data={data} setData={setData}/>; 
   }
   return (
     <div>
     <button
       onClick={onClick}
       style={{ backgroundColor: show ? "red": "green"  }}
-      className="margin-right right padding primary-color"
+      className="margin-bottom margin-right right padding primary-color"
     >
       {show ? "Close":"Add Task" }
     </button>

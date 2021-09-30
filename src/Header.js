@@ -1,9 +1,9 @@
-import React, {/* useState */}  from "react";
+import React /* useState */ from "react";
 //import AddTaskForm from "./AddTaskForm";
-import AddTask from "./AddTask";
+
 import ShowTaskData from "./ShowTaskData";
 
-function Header() {
+function Header({data,setData}) {
   /*
   let form;
   //const [color, setColor] = useState("green");  //to change color acc to button toggle
@@ -22,10 +22,11 @@ function Header() {
   */
   return (
     <div>
-      <AddTask /* color={show ? "red": "green" } onClick={onClick} title={show ? "Close":"Add Task" }*/ />
+      <div className="margin-top">      
+      </div>
       {/* AddTask for adding button  and form = AddTaskform to get the task on tasks detail 
       {form}*/}
-      <ShowTaskData />
+      <ShowTaskData  data={data} setData={setData}/>
     </div>
   );
 }

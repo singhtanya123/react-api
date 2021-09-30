@@ -28,3 +28,10 @@
     transform: rotate(360deg);
   }
 }
+#showtitle{
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#showtitle:nth-child(odd){background-color: #83b6ce;}
+
+#showtitle:hover {background-color: #ddd;}
