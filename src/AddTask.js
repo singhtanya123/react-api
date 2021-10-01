@@ -11,13 +11,17 @@ const AddTask = ({
 
   return (
     <div>
-      <button
-        onClick={() => setShow(!show)}
-        style={{ backgroundColor: show ? "red" : "green" }}
-        className='margin-right right padding primary-color'
-      >
-        {show ? "Close" : "Add Task"}
-      </button>
+      <div style={{ display: "flex" }}>
+        <p style={{ flex: 1 }}>Let's get started</p>
+
+        <button
+          onClick={() => setShow(!show)}
+          style={{ backgroundColor: show ? "red" : "green" }}
+          className='margin-right padding primary-color'
+        >
+          {show ? "Close" : "Add Task"}
+        </button>
+      </div>
       {show && <AddTaskForm data={data} setData={setData} />}
     </div>
   );
