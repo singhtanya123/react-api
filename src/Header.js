@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AddTask from "./AddTask";
 import ShowTaskData from "./ShowTaskData";
 
@@ -35,9 +35,9 @@ function Header() {
         setData(myJson);
       });
   };
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
   /*
   let form;

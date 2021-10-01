@@ -33,7 +33,7 @@ const AddTaskForm = ({ data, setData }) => {
 
     // fetch(url, requestMetadata).then((res) => res.json());
 
-    // resetForm();
+    resetForm();
   };
 
   return (
